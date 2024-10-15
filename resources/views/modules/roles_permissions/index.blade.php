@@ -5,18 +5,12 @@
 @section('content')
 
     <div class="page-header">
-        <h3 class="fw-bold mb-3">Employee Management</h3>
+        <h3 class="fw-bold mb-3">Roles & Permission Management</h3>
         <ul class="breadcrumbs mb-3">
             <li class="nav-home">
                 <a href="#">
                     <i class="icon-home"></i>
                 </a>
-            </li>
-            <li class="separator">
-                <i class="icon-arrow-right"></i>
-            </li>
-            <li class="nav-item">
-                <a href="#">Employee Onboarding</a>
             </li>
         </ul>
     </div>
@@ -24,11 +18,11 @@
     <div class="row">
         <div class="col-2">
             <a class="btn btn-primary my-3 btn btn-outline-dark float-right"
-               data-bs-content="{{route('employee_management.employee_onboarding.modal.create')}}"
+               data-bs-content="{{route('role_permission.modal.create')}}"
                data-bs-target="#extraLargeModal"
                data-bs-toggle="modal"
                style="cursor: pointer;">
-                <i class="fas fa-plus"></i>&nbsp;New Onboard
+                <i class="fas fa-plus"></i>&nbsp;New Role
             </a>
         </div>
     </div>
@@ -87,6 +81,25 @@
                 {data: 'action', name: 'action', orderable: false, searchable: false}
             ]
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const myModalEl = document.getElementById('extraLargeModal')
+            myModalEl.addEventListener('show.bs.modal', event => {
+                setTimeout(()=>{
+                    $(".module_check").click(function (e) {
+                        let $this = $(this);
+                        if (e.target.checked == true) {
+                            $this.closest(".permission_block").find(".sub_module_block").find(".sub_module_check").removeAttr(
+                                "disabled")
+                        } else {
+                            $this.closest(".permission_block").find(".sub_module_block").find(".sub_module_check").attr(
+                                "disabled", "disabled")
+                        }
+                    })
+                },200)
+            })
+        });
+
 
     </script>
 

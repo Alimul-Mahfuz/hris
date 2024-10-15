@@ -20,3 +20,7 @@
 .required-span{
     color: red !important;
 }
+
+.basic-datatables{
+    width: 100% !important;
+}

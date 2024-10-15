@@ -17,4 +17,7 @@ Route::prefix('dashboard')->group(function () {
         require_once "module/employee_management/employee_termination/employee_termination.php";
 
     });
+    Route::prefix('role_permission')->name('role_permission.')->group(function () {
+        require_once "module/role_permission/role_permission.php";
+    });
 });

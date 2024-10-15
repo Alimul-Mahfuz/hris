@@ -80,25 +80,25 @@
 
 <script src="{{asset('assets/js/form_submit.js')}}"></script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const modals = document.querySelectorAll('.modal');
+{{--<script>--}}
+{{--    document.addEventListener('DOMContentLoaded', function () {--}}
+{{--        const modals = document.querySelectorAll('.modal');--}}
 
-        modals.forEach(function (modal) {
-            modal.addEventListener('show.bs.modal', function (event) {
-                const button = event.relatedTarget;
-                const url = button.getAttribute('data-bs-content');
+{{--        modals.forEach(function (modal) {--}}
+{{--            modal.addEventListener('show.bs.modal', function (event) {--}}
+{{--                const button = event.relatedTarget;--}}
+{{--                const url = button.getAttribute('data-bs-content');--}}
 
-                fetch(url)
-                    .then(response => response.text())
-                    .then(data => {
-                        modal.querySelector('.modal-content').innerHTML = data;
-                    })
-                    .catch(error => console.error('Error loading modal content:', error));
-            });
-        });
-    });
-</script>
-@stack('js')
+{{--                fetch(url)--}}
+{{--                    .then(response => response.text())--}}
+{{--                    .then(data => {--}}
+{{--                        modal.querySelector('.modal-content').innerHTML = data;--}}
+{{--                    })--}}
+{{--                    .catch(error => console.error('Error loading modal content:', error));--}}
+{{--            });--}}
+{{--        });--}}
+{{--    });--}}
+{{--</script>--}}
+@yield('js')
 </body>
 </html>

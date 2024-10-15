@@ -35,13 +35,13 @@
                 </li>
                 @foreach(getModule() as $module)
                     <li class="nav-item">
-                        <a data-bs-toggle="collapse" href="#base">
+                        <a data-bs-toggle="{{$module->route==null ? 'collapse' : ""}}" href="{{$module->route==null ? '#'.$module->id : route($module->route)}}">
                             <i class="fas fa-layer-group"></i>
                             <p>{{$module->name}}</p>
-                            <span class="caret"></span>
+                            <span class="caret {{$module->route==null ? '' : 'd-none'}}"></span>
                         </a>
                         @if($module->route == null)
-                            <div class="collapse" id="base">
+                            <div class="collapse" id="{{$module->id}}">
                                 <ul class="nav nav-collapse">
                                     @foreach($module->sub_module as $sub_module)
 

@@ -22,6 +22,14 @@ class ModuleSeeder extends Seeder
                 'icon' => 'fas fa-archive',
                 'position' => 1,
                 'route' => null
+            ],
+            [
+                'id' => 2,
+                'name' => 'Roles and Permissions',
+                'key' => 'roles_and_permissions',
+                'icon' => 'fas fa-archive',
+                'position' => 2,
+                'route' => 'role_permission.index'
             ]
         ]);
     }

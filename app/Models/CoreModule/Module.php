@@ -14,5 +14,10 @@ class Module extends Model
         return $this->hasMany(SubModule::class);
     }
 
+    public function permission(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Permission::class);
+    }
+
 
 }
