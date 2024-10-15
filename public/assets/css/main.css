@@ -1,0 +1,22 @@
+.logo-header .logo{
+    color:whitesmoke;
+    font-weight: bold;
+}
+
+
+.breadcrumb {
+    padding: 10px 0;
+    background: none;
+    margin: 0;
+    list-style: none;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    padding: 0 5px;
+    color: #6c757d;
+}
+
+.required-span{
+    color: red !important;
+}
