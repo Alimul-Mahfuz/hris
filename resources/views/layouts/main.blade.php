@@ -11,7 +11,6 @@
     <div class="main-panel">
 
 
-
         @include('partials.navbar')
         <div class="container">
             <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -69,10 +68,17 @@
 
 <script src="{{asset('assets/js/form_submit.js')}}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 <script>
+
+    document.getElementById('logoutButton').addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default anchor behavior
+        document.getElementById('logoutForm').submit(); // Submit the form
+    });
     toastr.options = {
         "positionClass": "toast-bottom-right",  // You can change this to other positions like 'toast-bottom-left', 'toast-bottom-center', etc.
         "closeButton": true,
@@ -170,7 +176,6 @@
         // Trigger the toast
         toast.show();
     });
-
 
 
 </script>

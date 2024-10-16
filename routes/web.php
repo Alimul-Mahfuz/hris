@@ -31,4 +31,6 @@ Route::prefix('dashboard')->middleware([
     Route::name('dashboard.')->group(function () {
         require_once "module/dashboard/dashboard.php";
     });
+
+    Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 });

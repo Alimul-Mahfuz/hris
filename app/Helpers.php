@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\CoreModule\Module;
+use App\Models\SuperAdmin;
+use App\Models\UserModule\User;
 
 function getModule(): \Illuminate\Database\Eloquent\Collection
 {
@@ -26,7 +28,7 @@ function can($can): bool|\Illuminate\Http\RedirectResponse
 function folderMapping(): array
 {
     return [
-        'user'=>'app/users',
+        'user' => 'app/users',
     ];
 }
 
@@ -54,5 +56,17 @@ function get_active_module(Module $module, $currentRouteName): string
         return 'menu-open';
     } else {
         return '';
+    }
+}
+
+
+function getUserInfo()
+{
+    if (auth('web')->check()) {
+        $userId = auth('web')->user()->id;
+        return User::query()->find($userId);
+    } else {
+        $userId = auth('s_admin')->user()->id;
+        return SuperAdmin::query()->find($userId);
     }
 }
