@@ -42,7 +42,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table
-                            id="basic-datatables"
+                            id="dataGrid"
                             class="display table table-hover"
                         >
                             <thead>
@@ -71,7 +71,7 @@
 @section('js')
     <script type="text/javascript">
 
-        $('#basic-datatables').DataTable({
+        $('#dataGrid').DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ route('employee_management.employee_onboarding.data') }}",

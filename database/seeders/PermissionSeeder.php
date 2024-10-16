@@ -33,6 +33,14 @@ class PermissionSeeder extends Seeder
                 'display_name' => 'Employee Termination',
                 'module_id' => 1,
             ],
+            [
+                'id' => 4,
+                'key' => 'roles_and_permissions',
+                'display_name' => 'Roles and Permissions',
+                'module_id' => 2,
+            ],
+
+
         ]);
     }
 }

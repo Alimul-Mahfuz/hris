@@ -26,19 +26,22 @@
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/plugins.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/kaiadmin.min.css')}}"/>
-    <title>Login HRIS-Raktch</title>
+    <title>Super Admin Login HRIS-Raktch</title>
 </head>
 <body class="login bg-primary">
 <div class="wrapper wrapper-login">
     <div class="container container-login animated fadeIn">
-        <h3 class="text-center">Sign In</h3>
-        <form class="ajax-form" method="POST" action="{{route('authenticate')}}">
+        <h3 class="text-center">Super Admin | Sign In</h3>
+        <form class="" method="POST" action="{{route('super_admin.authenticate')}}">
             @csrf
             <div class="login-form">
                 <div class="form-sub">
                     <div class="form-floating form-floating-custom mb-3">
-                        <input type="text" id="employee_id" name="employee_id" class="form-control" placeholder="Employee ID" required/>
-                        <label for="employee_id">Employee ID</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" required/>
+                        <label for="email">Email</label>
+                        @error('email')
+                        <small class="text-danger">{{$message}}</small>
+                        @enderror
                     </div>
                     <div class="form-floating form-floating-custom mb-3">
                         <input type="password" id="password" name="password" class="form-control" placeholder="Password" required/>
@@ -46,6 +49,9 @@
                         <div class="show-password">
                             <i class="fas fa-eye"></i>
                         </div>
+                        @error('password')
+                        <small class="text-danger">{{$message}}</small>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-action mb-3">

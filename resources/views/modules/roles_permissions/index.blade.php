@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table
-                            id="basic-datatables"
+                            id="dataGrid"
                             class="display table table-hover"
                         >
                             <thead>
@@ -65,7 +65,7 @@
 @section('js')
     <script type="text/javascript">
 
-        $('#basic-datatables').DataTable({
+        $('#dataGrid').DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ route('employee_management.employee_onboarding.data') }}",
@@ -81,25 +81,6 @@
                 {data: 'action', name: 'action', orderable: false, searchable: false}
             ]
         });
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const myModalEl = document.getElementById('extraLargeModal')
-            myModalEl.addEventListener('show.bs.modal', event => {
-                setTimeout(()=>{
-                    $(".module_check").click(function (e) {
-                        let $this = $(this);
-                        if (e.target.checked == true) {
-                            $this.closest(".permission_block").find(".sub_module_block").find(".sub_module_check").removeAttr(
-                                "disabled")
-                        } else {
-                            $this.closest(".permission_block").find(".sub_module_block").find(".sub_module_check").attr(
-                                "disabled", "disabled")
-                        }
-                    })
-                },200)
-            })
-        });
-
 
     </script>
 

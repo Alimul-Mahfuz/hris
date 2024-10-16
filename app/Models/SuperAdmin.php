@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class SuperAdmin extends Model
+/**
+ * @method static findOrFail($userId)
+ */
+class SuperAdmin extends Authenticatable
 {
     use HasFactory;
 }

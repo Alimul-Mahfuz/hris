@@ -53,6 +53,8 @@ function successResponseProcess(response,modalHide, dbReload) {
                 $("#dataGrid").DataTable().ajax.reload();
             }
         }
+
+        toastr.success('Hello')
     }
     if (response.hasOwnProperty('status') && (response.status === 'error' || response.status === 'warning' || response.status === 'info')) {
 
