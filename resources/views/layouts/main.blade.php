@@ -33,7 +33,7 @@
 
             <div class="modal fade" id="extraLargeModal" data-bs-backdrop="static" data-bs-keyboard="false"
                  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-dialog modal-xl custom-modal" role="document">
                     <div class="modal-content">
 
                     </div>
@@ -53,6 +53,7 @@
 <script src="{{asset('assets/js/core/jquery-3.7.1.min.js')}}"></script>
 <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
 <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/lib/cropperjs/cropper.min.js')}}"></script>
 
 <!-- jQuery Scrollbar -->
 <script src="{{asset('assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
@@ -80,7 +81,7 @@
         document.getElementById('logoutForm').submit(); // Submit the form
     });
     toastr.options = {
-        "positionClass": "toast-bottom-right",  // You can change this to other positions like 'toast-bottom-left', 'toast-bottom-center', etc.
+        "positionClass": "toast-bottom-right",
         "closeButton": true,
         "progressBar": true,
         "timeOut": "5000",
@@ -88,47 +89,9 @@
     };
 
 
-    toastr.success("HI")
-    // document.addEventListener('DOMContentLoaded', function () {
-    //     const modals = document.querySelectorAll('.modal');
-    //
-    //     modals.forEach(function (modal) {
-    //         modal.addEventListener('show.bs.modal', function (event) {
-    //             const button = event.relatedTarget;
-    //             const url = button.getAttribute('data-bs-content');
-    //
-    //             fetch(url)
-    //                 .then(response => response.text())
-    //                 .then(data => {
-    //                     modal.querySelector('.modal-content').innerHTML = data;
-    //                 })
-    //                 .catch(error => console.error('Error loading modal content:', error));
-    //         });
-    //     });
-    // });
     $(window).on('load', function () {
         // console.clear()
     })
-
-
-    // $(document).ready(function() {
-    //     $(document).on('click', '[data-bs-toggle="modal"]', function(e) {
-    //         var target_modal_element = $(e.currentTarget).data('content');
-    //         var target_modal = $(e.currentTarget).data('target');
-    //         var modal = $(target_modal);
-    //         var modalBody = $(target_modal + ' .modal-content');
-    //
-    //         // Show a loading spinner or message
-    //         modalBody.html('<div class="text-center my-5"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>');
-    //
-    //         // Load content into the modal
-    //         modalBody.load(target_modal_element, function(response, status, xhr) {
-    //             if (status === "error") {
-    //                 modalBody.html('<p class="text-danger text-center my-5">Error loading content. Please try again later.</p>');
-    //             }
-    //         });
-    //     });
-    // });
 
     document.addEventListener('DOMContentLoaded', function () {
         // Attach a single event listener for the whole document

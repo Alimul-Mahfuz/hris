@@ -24,3 +24,7 @@
 .basic-datatables{
     width: 100% !important;
 }
+
+.custom-modal {
+    max-width: 70% !important;
+}

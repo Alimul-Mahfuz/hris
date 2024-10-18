@@ -50,6 +50,22 @@ class EmployeeOnboardingController extends Controller
         $employee->nid = $request->input('nid');
         $employee->gender = $request->input('gender');
         $employee->bg = $request->input('bg');
+
+        if ($request->hasFile('profile_image')) {
+            $profile_image_file=$request->file('profile_image');
+            $fileContent = file_get_contents($profile_image_file->getRealPath());
+            $profileImageBase64 = base64_encode($fileContent);
+            $employee->profile_image = $profileImageBase64;
+        }
+
+        // Handle signature image upload
+        if ($request->hasFile('signature_image')) {
+            $signature_image_file=$request->file('signature_image');
+            $fileContent = file_get_contents($signature_image_file->getRealPath());
+            $signatureImageBase64 = base64_encode($fileContent);
+            $employee->signature_image = $signatureImageBase64;
+        }
+
         $employee->save();
         return response()->json(['status' => 'success', 'message' => 'Employee information saved'], 200);
     }
@@ -59,7 +75,7 @@ class EmployeeOnboardingController extends Controller
      */
     public function data(): \Illuminate\Http\JsonResponse
     {
-        $data = User::with('designation')->select('id', 'employee_id', 'name', 'email', 'designation_id', 'joining_date', 'is_active','employment_type');
+        $data = User::with('designation')->select('id', 'employee_id', 'name','profile_image', 'email', 'designation_id', 'joining_date', 'is_active','employment_type')->orderBy('id', 'DESC');
 
         return DataTables::of($data)
             ->addIndexColumn()
@@ -76,6 +92,9 @@ class EmployeeOnboardingController extends Controller
             ->editColumn('joining_date', function ($data) {
                 return Carbon::parse($data->joining_date)->format('d-m-Y');  // Format date as 'dd-mm-yyyy'
             })
+            ->editColumn('profile_image', function ($data) {
+                return '<div class="avatar"><img src="data:image/png;base64,' . $data->profile_image . '" alt="user profile" class="avatar-img rounded-circle"></div>';
+            })
             ->addColumn('action', function ($data) {
                 return '<div class="btn-group dropdown">
                         <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -91,7 +110,7 @@ class EmployeeOnboardingController extends Controller
                         </ul>
                       </div>';
             })
-            ->rawColumns(['action', 'is_active', 'designation_id', 'joining_date']) // Ensure 'action' and 'status' contain raw HTML
+            ->rawColumns(['action', 'is_active', 'designation_id', 'joining_date','profile_image']) // Ensure 'action' and 'status' contain raw HTML
             ->make(true);
     }
 
@@ -129,6 +148,20 @@ class EmployeeOnboardingController extends Controller
         $employee->nid = $request->input('nid');
         $employee->gender = $request->input('gender');
         $employee->bg = $request->input('bg');
+        if ($request->hasFile('profile_image')) {
+            $profile_image_file=$request->file('profile_image');
+            $fileContent = file_get_contents($profile_image_file->getRealPath());
+            $profileImageBase64 = base64_encode($fileContent);
+            $employee->profile_image = $profileImageBase64;
+        }
+
+        // Handle signature image upload
+        if ($request->hasFile('signature_image')) {
+            $signature_image_file=$request->file('signature_image');
+            $fileContent = file_get_contents($signature_image_file->getRealPath());
+            $signatureImageBase64 = base64_encode($fileContent);
+            $employee->signature_image = $signatureImageBase64;
+        }
         $employee->save();
         return response()->json(['status' => 'success', 'message' => 'Employee information updated'], 200);
 

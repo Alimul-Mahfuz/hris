@@ -48,6 +48,7 @@
                             <thead>
                             <tr>
                                 <th>#SL</th>
+                                <th>Image</th>
                                 <th>Employee ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
@@ -77,6 +78,7 @@
             ajax: "{{ route('employee_management.employee_onboarding.data') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                {data: 'profile_image', name: 'profile_image', orderable: false, searchable: false},
                 {data: 'employee_id', name: 'employee_id', orderable: false, searchable: false},
                 {data: 'name', name: 'name'},
                 {data: 'email', name: 'email'},

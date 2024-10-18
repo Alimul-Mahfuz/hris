@@ -54,7 +54,7 @@ function successResponseProcess(response,modalHide, dbReload) {
             }
         }
 
-        toastr.success('Hello')
+        toastr.info(response.message)
     }
     if (response.hasOwnProperty('status') && (response.status === 'error' || response.status === 'warning' || response.status === 'info')) {
 

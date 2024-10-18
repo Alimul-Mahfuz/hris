@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\EmployeeManagment\EmployeeOnboarding;
 
+use App\Rules\ImageDimension;
 use Illuminate\Foundation\Http\FormRequest;
 
 class EmployeeOnboardingStoreRequest extends FormRequest
@@ -36,6 +37,8 @@ class EmployeeOnboardingStoreRequest extends FormRequest
             'dob'=>'required|date',
             'bg'=>'required',
             'gender'=>'required',
+//            'profile_image' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:2048', new ImageDimension(200, 200)],
+//            'signature_image' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:2048', new ImageDimension(300, 100)],
         ];
     }
 }

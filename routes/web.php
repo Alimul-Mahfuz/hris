@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware([CustomGuestMiddleware::class])->group(function () {
-    Route::get('login', [AuthenticationController::class, 'index'])->name('login');
+    Route::get('/', [AuthenticationController::class, 'index'])->name('login');
     Route::post('authenticate', [AuthenticationController::class, 'authenticate'])->name('authenticate');
     Route::get('super-admin/login', [AuthenticationController::class, 'super_admin_login'])->name('super_admin.login');
     Route::post('super-admin/authenticate', [AuthenticationController::class, 'super_admin_authenticate'])->name('super_admin.authenticate');
